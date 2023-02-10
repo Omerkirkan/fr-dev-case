@@ -1,46 +1,15 @@
 {
-    "sections": [
-      {
-        "id": 2,
-        "title": "Section 3",
-        "todos": [
-          {
-            "id": 303720,
-            "title": "Todo 5",
-            "description": "Description 5"
-          },
-          {
-            "id": 33748,
-            "title": "New Todo",
-            "description": "New Todo Description"
-          },
-          {
-            "id": 82451,
-            "title": "New Todo",
-            "description": "New Todo Description"
-          },
-          {
-            "id": 26756,
-            "title": "New Todo",
-            "description": "New Todo Description"
-          }
-        ]
-      },
-      {
-        "id": 4,
-        "title": "Section 2",
-        "todos": [
-          {
-            "id": 174875,
-            "title": "Todo 7",
-            "description": "Description 5"
-          },
-          {
-            "id": 11983,
-            "title": "New Todo",
-            "description": "New Todo Description"
-          }
-        ]
-      }
-    ]
-  }
+  "sections": [
+    {
+      "id": 1,
+      "title": "New Section",
+      "todos": [
+        {
+          "id": 43260,
+          "title": "Todo 1",
+          "description": "New Todo Description"
+        }
+      ]
+    }
+  ]
+}

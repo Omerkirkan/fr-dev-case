@@ -67,7 +67,7 @@ export default new Vuex.Store({
     addNewTodo({ commit }, sectionId) {
       const newTodo = {
         id: Math.floor(Math.random() * 1 * 99999),
-        title: "New Todo",
+        title: "",
         description: "New Todo Description",
       };
 
@@ -93,8 +93,17 @@ export default new Vuex.Store({
       appService.updateTodos({ id, section }).then((response) => {
         console.log(response);
       })
-    }
+    },
 
+    updateTodo({ commit }, { sectionid, id, title }) {
+      const section = this.state.sections.find(section => section.id === sectionid)
+      const todo = section.todos.find(todo => todo.id === id)
+      todo.title = title;
+
+      appService.updateTodos({ id: sectionid, section }).then((response) => {
+        commit("SET_SECTIONS", response.data);
+      })
+    }
 
   },
 });

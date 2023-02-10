@@ -19,6 +19,8 @@
             v-for="todo in todos"
             :key="todo.id"
             :todo="todo"
+            :sectionid="section.id"
+            ref="todocardcomp"
           ></TodoCard>
         </transition-group>
       </draggable>
@@ -62,6 +64,11 @@ export default {
   methods: {
     addNewTodo() {
       this.$store.dispatch("addNewTodo", this.section.id);
+      
+      setTimeout(() => {
+        this.$refs.todocardcomp[this.todos.length - 1].editTodoName();
+      }, 2000);
+
     },
     deleteSection() {
       this.$store.dispatch("deleteSection", this.section.id);
