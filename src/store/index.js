@@ -84,6 +84,15 @@ export default new Vuex.Store({
       appService.deleteSection(id).then((response) => {
         commit("SET_SECTIONS", response.data);
       });
+    },
+
+    updateSectionTitle(_ , { id, title }) {
+      const section = this.state.sections.find(section => section.id === id)
+      section.title = title;
+
+      appService.updateTodos({ id, section }).then((response) => {
+        console.log(response);
+      })
     }
 
 

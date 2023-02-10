@@ -1,7 +1,8 @@
 <template>
   <div class="list-section">
     <div class="list-section-header">
-      <span> {{ section.title }} </span>
+      <span v-if="!sectionTitleEdit" @click="editTitle()"> {{ section.title }} </span>
+      <input type="text" v-model="sectionTitle" ref="sectiontitleedit" v-if="sectionTitleEdit" @blur="updateTitle()">
       <button @click="addNewTodo()"> Add New Todo </button>
       <button @click="deleteSection()"> De </button>
     </div>
@@ -42,6 +43,8 @@ export default {
   data() {
     return {
       drag: false,
+      sectionTitle: this.section.title,
+      sectionTitleEdit: false,
     };
   },
 
@@ -62,6 +65,19 @@ export default {
     },
     deleteSection() {
       this.$store.dispatch("deleteSection", this.section.id);
+    },
+    editTitle() {
+      this.sectionTitleEdit = true;
+      this.$nextTick(() => {
+        this.$refs.sectiontitleedit.focus();
+      });
+    },
+    updateTitle() {
+      this.sectionTitleEdit = false;
+      this.$store.dispatch("updateSectionTitle", {
+        id: this.section.id,
+        title: this.sectionTitle,
+      });
     },
   },
 };

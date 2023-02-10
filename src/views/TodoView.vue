@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button @click="addNewSection"> Add New Section </button>
+    <button @click="addNewSection()">Add New Section</button>
     <div>
       <draggable
         v-model="sections"
@@ -14,6 +14,7 @@
             v-for="section in sections"
             :key="section.id"
             :section="section"
+            ref="todosectioncomp"
           ></SectionComp>
         </transition-group>
       </draggable>
@@ -41,23 +42,27 @@ export default {
     this.$store.dispatch("getSections");
   },
 
-
   computed: {
     sections: {
       get() {
         return this.$store.getters.sections;
       },
       set(value) {
-        this.$store.dispatch('updateSections', value);
+        this.$store.dispatch("updateSections", value);
       },
     },
   },
 
   methods: {
     addNewSection() {
-      this.$store.dispatch('addNewSection');
-    }
-  }
+      this.$store.dispatch("addNewSection");
 
+      setTimeout(() => {
+        this.$nextTick(() => {
+          this.$refs.todosectioncomp[this.sections.length - 1].editTitle();
+        });
+      }, 200);
+    },
+  },
 };
 </script>
