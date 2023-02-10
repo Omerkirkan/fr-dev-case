@@ -1,32 +1,29 @@
 <template>
   <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
-    <router-view/>
+    <a-layout id="components-layout-demo-responsive" style="height: 100vh;">
+      <sideBar />
+
+      <a-layout>
+        <a-layout-content :style="{ margin: '10px 16px 0' }">
+          <div
+            :style="{ padding: '24px' }"
+          >
+            
+          <router-view></router-view>
+
+          </div>
+        </a-layout-content>
+      </a-layout>
+    </a-layout>
   </div>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+<script>
+import sideBar from "@/components/SideBar.vue";
+export default {
+  name: "App",
+  components: {
+    sideBar
+  }
 }
-
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+</script>
