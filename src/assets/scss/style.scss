@@ -7,18 +7,93 @@
     position: fixed;
 }
 
+.side-bar-custom-style {
+    padding: 24px 24px 16px;
+    background-color: #ffffff;
+}
+.ant-layout-sider-collapsed {
+    padding: 0px !important;
+
+    .ant-menu-select-company {
+        span {
+            display: none;
+        }
+        display: grid;
+    }
+}
+
 .side-menu {
     height: 100vh;
+    font-family: 'Karla';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: -0.03em;
+    color: #1D2939;
+    border: 0px;
 
     .ant-menu-item {
         display: flex;
         justify-content: flex-start;
         align-items: center;
+        padding: 12px 8px 12px 6px !important;
+
+        a {
+            display: flex;
+            align-items: center;
+        }
+
+        .anticon {
+            font-size: 22px !important;
+        }
     }
+
+    .ant-menu-item-active {
+        background: #F2F4F7 !important;
+        border-radius: 8px !important;
+        color: black !important;
+
+        a {
+            color: black;
+        }
+    }
+
+    .ant-menu-item-selected {
+
+        /* Gray / 100 */
+
+        background: #F2F4F7 !important;
+        border-radius: 8px !important;
+
+        a {
+            color: black;
+        }
+
+        // after
+
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+            background: #F2F4F7;
+            z-index: -1;
+        }
+
+    }
+
+
+
+
 }
 
 .ant-menu-custom-style {
-    padding: 10px;
+
     margin-bottom: 30px;
 }
 
@@ -26,6 +101,19 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    font-family: 'Karla';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    color: #1D2939;
+
+    .side-select-company-icon {
+        width: 24px;
+        height: 24px;
+        background: #1D2939;
+        border-radius: 4px;
+        margin-right: 10px;
+    }
 }
 
 .menu-count {
@@ -43,16 +131,14 @@
 .sections-container {
     width: 100%;
     height: 90vh;
-    background-color: green;
     display: flex;
     flex-wrap: nowrap;
     overflow-x: auto;
 
     .list-section {
         flex: 0 0 auto;
-        width: 250px;
+        width: 320px;
         height: 300px;
-        border: 2px solid red;
         margin: 10px 10px;
     }
 

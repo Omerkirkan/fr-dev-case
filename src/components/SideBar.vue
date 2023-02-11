@@ -1,7 +1,5 @@
 <template>
-  <a-layout-sider
-    breakpoint="lg"
-  >
+  <a-layout-sider breakpoint="lg" width="300" class="side-bar-custom-style">
     <a-menu
       :default-selected-keys="['1']"
       mode="inline"
@@ -10,26 +8,30 @@
       class="side-menu"
     >
       <a-sub-menu key="sub1" class="ant-menu-custom-style">
-        <span class="ant-menu-select-company" slot="title"
-          ><a-icon type="mail" /><span>Navigation One</span></span
+        <span class="ant-menu-select-company" slot="title">
+          <i class="side-select-company-icon"></i> <span>Company</span></span
         >
       </a-sub-menu>
 
       <a-menu-item key="1">
-
         <router-link :to="{ name: 'todos' }">
-
-        <a-icon type="home" />
-        <span>Option 1</span>
-        <span class="menu-count">4</span>
-      </router-link>
+          <a-icon type="appstore" />
+          <span>Option 1</span>
+          <span class="menu-count">4</span>
+        </router-link>
       </a-menu-item>
       <a-menu-item key="2">
-        <a-icon type="desktop" />
+        <router-link :to="{ name: 'todos' }">
+        <a-icon type="bell" />
         <span>Option 2</span>
+      </router-link>
       </a-menu-item>
       <a-menu-item key="3">
-        <a-icon type="inbox" />
+        <a-icon type="bar-chart" />
+        <span>Option 3</span>
+      </a-menu-item>
+      <a-menu-item key="3">
+        <a-icon type="user" />
         <span>Option 3</span>
       </a-menu-item>
     </a-menu>
