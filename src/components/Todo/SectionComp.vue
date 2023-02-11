@@ -3,8 +3,8 @@
     <div class="list-section-header">
       <span v-if="!sectionTitleEdit" @click="editTitle()"> {{ section.title }} </span>
       <input type="text" v-model="sectionTitle" ref="sectiontitleedit" v-if="sectionTitleEdit" @blur="updateTitle()">
-      <a-button type="primary" @click="addNewTodo()"> <a-icon type="plus" /> Add New Todo </a-button>
-      <!-- <button @click="deleteSection()"> De </button> -->
+      <a-button type="primary" @click="addNewTodo()" ghost> <a-icon type="plus" /> Add New Todo </a-button>
+      <a-button type="danger" @click="deleteSection()" ghost> <a-icon type="delete" /></a-button>
     </div>
     <div class="list-section-body">
       <draggable

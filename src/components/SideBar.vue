@@ -16,30 +16,31 @@
       <a-menu-item key="1">
         <router-link :to="{ name: 'todos' }">
           <a-icon type="appstore" />
-          <span>Option 1</span>
-          <span class="menu-count">4</span>
+          <span>Tasks</span>
+          <span class="menu-count">{{ todosCount }}</span>
         </router-link>
       </a-menu-item>
       <a-menu-item key="2">
         <router-link :to="{ name: 'todos' }">
         <a-icon type="bell" />
-        <span>Option 2</span>
-        <span class="menu-count">4</span>
+        <span>Notifications</span>
+        <span class="menu-count" style="background-color: #F2F4F7;color: black;">7</span>
       </router-link>
       </a-menu-item>
       <a-menu-item key="3">
         <a-icon type="bar-chart" />
-        <span>Option 3</span>
+        <span>Analytics</span>
       </a-menu-item>
       <a-menu-item key="4">
         <a-icon type="user" />
-        <span>Option 3</span>
-        <span class="menu-count">4</span>
+        <span>Team</span>
+        <span class="menu-count" style="background-color: #F2F4F7;color: black;">2</span>
       </a-menu-item>
     </a-menu>
   </a-layout-sider>
 </template>
   <script>
+  import { mapGetters } from 'vuex';
 export default {
   data() {
     return {
@@ -49,6 +50,10 @@ export default {
 
   mounted() {
     window.addEventListener("resize", this.resizeHandler);
+  },
+
+  computed: {
+    ...mapGetters(['todosCount']),
   },
 
   methods: {

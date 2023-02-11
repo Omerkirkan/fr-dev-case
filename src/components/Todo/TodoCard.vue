@@ -96,9 +96,12 @@ export default {
 
   filters: {
     beShort(value) {
-      if (value.length > 11) {
+      if (value) {
+        if (value.length > 11) {
         return value.substring(0, 11) + "...";
       }
+      }
+      
       return value;
     },
   },
