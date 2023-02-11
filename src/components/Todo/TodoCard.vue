@@ -15,9 +15,11 @@
       @blur="todoNameEdited()"
       v-if="todoNameEdit"
     />
-    <span class="todo-created-date">
-      {{ todo.created_at }} - Created <b>Admin</b>
+    <div>
+    <span :class="{'todo-created-date': !todoNameEdit}">
+      {{ getDateFormat }} - Created by <b class="strong-text">Admin</b>
     </span>
+  </div>
 
     <p class="todo-card-description">{{ todo.description }}</p>
 
@@ -39,20 +41,30 @@
     </div>
 
     <div class="todo-card-labels">
-        <a-tag class="colorful-label" :color="colors[i]" v-for="(label, i) in todo.labels" :key="label+i"> {{ label }} </a-tag>
+      <a-tag
+        class="colorful-label"
+        :color="colors[i]"
+        v-for="(label, i) in todo.labels"
+        :key="label + i"
+      >
+        {{ label }}
+      </a-tag>
     </div>
 
     <div class="todo-card-comment">
-        <div>
-            <a-icon type="message" />
-            <span> {{ todo.comments }} </span>
-        </div>
-        <div>
-            <a-avatar v-for="(follower,i) in todo.followers" :key="i" style="color: #f56a00; backgroundColor: #fde3cf">
-      U
-    </a-avatar>
-        </div>
-
+      <div>
+        <a-icon type="message" />
+        <span> {{ todo.comments }} </span>
+      </div>
+      <div>
+        <a-avatar
+          v-for="(follower, i) in todo.followers"
+          :key="i"
+          style="color: #f56a00; backgroundcolor: #fde3cf"
+        >
+          U
+        </a-avatar>
+      </div>
     </div>
   </a-card>
 </template>
@@ -98,12 +110,24 @@ export default {
     beShort(value) {
       if (value) {
         if (value.length > 11) {
-        return value.substring(0, 11) + "...";
+          return value.substring(0, 11) + "...";
+        }
       }
-      }
-      
+
       return value;
     },
+  },
+
+  computed:{
+    getDateFormat(){
+      return new Date(this.todo.created_at).toLocaleDateString(
+        "en-US",
+        {
+          month: "short",
+          day: "numeric",
+        }
+      );
+    }
   },
 
   mounted() {
