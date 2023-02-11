@@ -251,6 +251,7 @@
 
     .todo-card-labels {
         margin-top: 14px;
+
         .colorful-label {
             margin: 5px 5px 0px 0px;
             border-radius: 4px;
@@ -261,6 +262,24 @@
         margin-top: 14px;
         display: flex;
         justify-content: space-between;
+        align-items: center;
+
+        .todo-comment-area {
+            font-family: 'Karla';
+            font-style: normal;
+            font-weight: 500;
+            font-size: 15px;
+            line-height: 18px;
+            color: #98A2B3;
+        }
+
+        .ant-avatar {
+            width: 24px;
+            height: 24px;
+            font-size: 12px;
+            line-height: 24px;
+            margin-right: 3px;
+        }
     }
 }
 

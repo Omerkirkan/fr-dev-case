@@ -52,17 +52,17 @@
     </div>
 
     <div class="todo-card-comment">
-      <div>
-        <a-icon type="message" />
+      <div class="todo-comment-area">
+        <a-icon type="message" class="mr-5" />
         <span> {{ todo.comments }} </span>
       </div>
       <div>
         <a-avatar
           v-for="(follower, i) in todo.followers"
           :key="i"
-          :style="{'color': colors[Math.floor(Math.random() * 1 * colors.length)], 'background': colors[Math.floor(Math.random() * 1 * colors.length)]}"
+          :style="{'color': follower.color, 'background': follower.bg}"
         >
-          <span v-text="follower"></span>
+          <span v-text="follower.name"></span>
         </a-avatar>
       </div>
     </div>

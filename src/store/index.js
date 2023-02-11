@@ -68,11 +68,16 @@ export default new Vuex.Store({
     // Bu ise yeni bir todo ekler
     addNewTodo({ commit }, sectionId) {
       let words = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+      let colors = ["#FF0000", "#FF7F00", "#FFFF00", "#00FF00", "#0000FF", "#4B0082", "#8B00FF"];
 
       const followersWords = () => {
         let followers = [];
-        for (let i = 0; i < 2; i++) {
-          followers.push(words[Math.floor(Math.random() * words.length)]);
+        for (let i = 0; i < Math.floor(Math.random() * 1 * 7); i++) {
+          followers.push({
+            name: words[Math.floor(Math.random() * words.length)],
+            color: colors[Math.floor(Math.random() * colors.length)],
+            bg: colors[Math.floor(Math.random() * colors.length)]
+          });
         }
         return followers;
       }

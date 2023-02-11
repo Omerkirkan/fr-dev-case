@@ -2,13 +2,13 @@
   "sections": [
     {
       "id": 1,
-      "title": "New Section",
+      "title": "Todo",
       "todos": [
         {
-          "id": 20531,
-          "title": "",
+          "id": 72797,
+          "title": "Todo 1",
           "description": "New Todo Description",
-          "created_at": 1676123183804,
+          "created_at": 1676123916397,
           "link": null,
           "addition": null,
           "labels": [],
@@ -16,24 +16,81 @@
           "comments": 3,
           "followers": [
             "D",
-            "X",
-            "P"
+            "U"
           ]
         },
         {
-          "id": 95075,
+          "id": 12935,
           "title": "",
           "description": "New Todo Description",
-          "created_at": 1676123187779,
+          "created_at": 1676124115533,
           "link": null,
           "addition": null,
           "labels": [],
           "image": false,
-          "comments": 3,
+          "comments": 0,
           "followers": [
-            "W",
-            "W",
-            "M"
+            {
+              "name": "E",
+              "color": "#00FF00",
+              "bg": "#00FF00"
+            },
+            {
+              "name": "M",
+              "color": "#4B0082",
+              "bg": "#00FF00"
+            },
+            {
+              "name": "F",
+              "color": "#8B00FF",
+              "bg": "#FF0000"
+            }
+          ]
+        },
+        {
+          "id": 75520,
+          "title": "",
+          "description": "New Todo Description",
+          "created_at": 1676124182963,
+          "link": null,
+          "addition": null,
+          "labels": [],
+          "image": false,
+          "comments": 0,
+          "followers": [
+            {
+              "name": "F",
+              "color": "#FFFF00",
+              "bg": "#00FF00"
+            },
+            {
+              "name": "S",
+              "color": "#FF0000",
+              "bg": "#4B0082"
+            },
+            {
+              "name": "W",
+              "color": "#FFFF00",
+              "bg": "#FF7F00"
+            }
+          ]
+        },
+        {
+          "id": 74988,
+          "title": "",
+          "description": "New Todo Description",
+          "created_at": 1676124236655,
+          "link": null,
+          "addition": null,
+          "labels": [],
+          "image": false,
+          "comments": 5,
+          "followers": [
+            {
+              "name": "E",
+              "color": "#FF7F00",
+              "bg": "#0000FF"
+            }
           ]
         }
       ]
@@ -41,56 +98,7 @@
     {
       "id": 2,
       "title": "New Section",
-      "todos": [
-        {
-          "id": 85690,
-          "title": "",
-          "description": "New Todo Description",
-          "created_at": 1676123182156,
-          "link": null,
-          "addition": null,
-          "labels": [],
-          "image": false,
-          "comments": 0,
-          "followers": [
-            "W",
-            "E",
-            "G"
-          ]
-        },
-        {
-          "id": 26057,
-          "title": "",
-          "description": "New Todo Description",
-          "created_at": 1676123193027,
-          "link": null,
-          "addition": null,
-          "labels": [],
-          "image": false,
-          "comments": 3,
-          "followers": [
-            "D",
-            "E",
-            "Z"
-          ]
-        },
-        {
-          "id": 50465,
-          "title": "",
-          "description": "New Todo Description",
-          "created_at": 1676123185756,
-          "link": null,
-          "addition": null,
-          "labels": [],
-          "image": false,
-          "comments": 4,
-          "followers": [
-            "D",
-            "N",
-            "C"
-          ]
-        }
-      ]
+      "todos": []
     }
   ]
 }
