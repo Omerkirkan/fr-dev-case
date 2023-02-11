@@ -24,15 +24,17 @@
         <router-link :to="{ name: 'todos' }">
         <a-icon type="bell" />
         <span>Option 2</span>
+        <span class="menu-count">4</span>
       </router-link>
       </a-menu-item>
       <a-menu-item key="3">
         <a-icon type="bar-chart" />
         <span>Option 3</span>
       </a-menu-item>
-      <a-menu-item key="3">
+      <a-menu-item key="4">
         <a-icon type="user" />
         <span>Option 3</span>
+        <span class="menu-count">4</span>
       </a-menu-item>
     </a-menu>
   </a-layout-sider>

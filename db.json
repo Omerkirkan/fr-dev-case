@@ -5,9 +5,39 @@
       "title": "New Section",
       "todos": [
         {
-          "id": 43260,
-          "title": "Todo 1",
-          "description": "New Todo Description"
+          "id": 34641,
+          "title": "asd 12211",
+          "description": "New Todo Description",
+          "created_at": 1676110695559,
+          "link": "111",
+          "addition": "222",
+          "labels": [],
+          "image": false
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "In Progress",
+      "todos": [
+        {
+          "id": 91356,
+          "title": "deneme123",
+          "description": "New Todo Description jhgfcdcgvhbjhjgfccgvbhnjbhgvf",
+          "created_at": "2019-10-10T12:00:00.000Z",
+          "link": "https://www.google.com",
+          "addition": "https://stackoverflow.com/",
+          "labels": [
+            "Design",
+            "Development",
+            "Testing",
+            "Deployment",
+            "Maintenance",
+            "Other"
+          ],
+          "image": true,
+          "comments": 3,
+          "followers": 2
         }
       ]
     }

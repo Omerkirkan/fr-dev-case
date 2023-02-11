@@ -10,7 +10,7 @@ export default new Vuex.Store({
   },
   getters: {
     sections: (state) => state.sections,
-    todos: state => id => state.sections.find(section => section.id === id).todos,
+    todos: state => id => state.sections.find(section => section.id === id).todos
   },
   mutations: {
     SET_SECTIONS(state, sections) {
@@ -69,6 +69,13 @@ export default new Vuex.Store({
         id: Math.floor(Math.random() * 1 * 99999),
         title: "",
         description: "New Todo Description",
+        created_at: Date.now(),
+        link: null,
+        addition: null,
+        labels: [],
+        image: false,
+        comments: Math.floor(Math.random() * 1 * 7),
+        followers: Math.floor(Math.random() * 1 * 3),
       };
 
       const section = this.state.sections.find(section => section.id === sectionId)
@@ -95,10 +102,20 @@ export default new Vuex.Store({
       })
     },
 
-    updateTodo({ commit }, { sectionid, id, title }) {
+    updateTodoTitle({ commit }, { sectionid, id, title }) {
       const section = this.state.sections.find(section => section.id === sectionid)
       const todo = section.todos.find(todo => todo.id === id)
       todo.title = title;
+
+      appService.updateTodos({ id: sectionid, section }).then((response) => {
+        commit("SET_SECTIONS", response.data);
+      })
+    },
+
+    updateTodo({ commit }, { sectionid, id, todo }) {
+      const section = this.state.sections.find(section => section.id === sectionid)
+      const todoIndex = section.todos.findIndex(todo => todo.id === id)
+      section.todos[todoIndex] = todo;
 
       appService.updateTodos({ id: sectionid, section }).then((response) => {
         commit("SET_SECTIONS", response.data);

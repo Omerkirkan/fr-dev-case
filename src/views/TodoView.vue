@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button @click="addNewSection()">Add New Section</button>
+    <a-button type="primary" @click="addNewSection()"> <a-icon type="plus" /> Add New Section </a-button>
     <div>
       <draggable
         v-model="sections"
@@ -19,11 +19,13 @@
         </transition-group>
       </draggable>
     </div>
+    <router-view></router-view>
   </div>
 </template>
 <script>
 import SectionComp from "@/components/Todo/SectionComp.vue";
 import draggable from "vuedraggable";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   name: "TodoView",
@@ -43,19 +45,28 @@ export default {
   },
 
   computed: {
+    ...mapGetters({
+      _sections: "sections"
+    }),
+
     sections: {
       get() {
-        return this.$store.getters.sections;
+        return this._sections;
       },
       set(value) {
-        this.$store.dispatch("updateSections", value);
+        this._updateSections(value);
       },
     },
   },
 
   methods: {
+    ...mapActions({
+      _addNewSection: "addNewSection",
+      _updateSections: "updateSections",
+    }),
+
     addNewSection() {
-      this.$store.dispatch("addNewSection");
+      this._addNewSection();
 
       setTimeout(() => {
         this.$nextTick(() => {

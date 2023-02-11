@@ -16,7 +16,18 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/TodoView.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/TodoView.vue'),
+    children: [
+      {
+        path: ':sectionid/:todo',
+        name: 'todo',
+        props: true,
+        meta: {
+          showModal: true
+        },
+        component: () => import(/* webpackChunkName: "about" */ '../components/Todo/EditTodoModal.vue')
+      }
+    ]
   }
 ]
 

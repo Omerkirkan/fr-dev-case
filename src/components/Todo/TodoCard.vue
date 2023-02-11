@@ -1,50 +1,140 @@
 <template>
-  <a-card size="small" class="todo-list-card" :title="todo.title" style="width: 100%;" :hoverable="true" :loading="cardLoading">
-    <input type="text" v-model="todoName" ref="todonameeditinput" @blur="todoNameEdited()" v-if="todoNameEdit">
-    <p>{{ todo.status }}</p>
-    <p> {{ todo.description }} </p>
-    <p>card content</p>
+  <a-card
+    size="small"
+    class="todo-list-card"
+    :title="todo.title"
+    style="width: 100%"
+    :hoverable="true"
+    :loading="cardLoading"
+    @click="editTodo()"
+  >
+    <input
+      type="text"
+      v-model="todoName"
+      ref="todonameeditinput"
+      @blur="todoNameEdited()"
+      v-if="todoNameEdit"
+    />
+    <span class="todo-created-date">
+      {{ todo.created_at }} - Created <b>Admin</b>
+    </span>
+
+    <p class="todo-card-description">{{ todo.description }}</p>
+
+    <img
+      src="@/assets/images/card-sample-img.png"
+      class="todo-card-img"
+      v-if="todo.image"
+    />
+
+    <div class="todo-card-addition">
+      <div>
+        <a-icon type="clock-circle" />
+        <span> {{ todo.link | beShort }} </span>
+      </div>
+      <div class="ml-15">
+        <a-icon type="user" />
+        <span> {{ todo.addition | beShort }} </span>
+      </div>
+    </div>
+
+    <div class="todo-card-labels">
+        <a-tag class="colorful-label" :color="colors[i]" v-for="(label, i) in todo.labels" :key="label+i"> {{ label }} </a-tag>
+    </div>
+
+    <div class="todo-card-comment">
+        <div>
+            <a-icon type="message" />
+            <span> {{ todo.comments }} </span>
+        </div>
+        <div>
+            <a-avatar v-for="(follower,i) in todo.followers" :key="i" style="color: #f56a00; backgroundColor: #fde3cf">
+      U
+    </a-avatar>
+        </div>
+
+    </div>
   </a-card>
 </template>
 <script>
+import { mapActions } from "vuex";
+
 export default {
   name: "TodoCard",
-    props: {
-        todo: {
-            type: Object,
-            required: true,
-        },
-        sectionid: {
-            type: Number,
-            required: true,
-        },
+  props: {
+    todo: {
+      type: Object,
+      required: true,
     },
+    sectionid: {
+      type: Number,
+      required: true,
+    },
+  },
 
-    data() {
-        return {
-            cardLoading: true,
-            todoNameEdit: false,
-            todoName: this.todo.title,
-        };
-    },
+  data() {
+    return {
+      cardLoading: true,
+      todoNameEdit: false,
+      todoName: this.todo.title,
+      editModalVisible: false,
+      colors: [
+        "magenta",
+        "red",
+        "volcano",
+        "orange",
+        "gold",
+        "lime",
+        "green",
+        "cyan",
+        "blue",
+        "geekblue",
+        "purple",
+      ],
+    };
+  },
 
-    mounted() {
-        setTimeout(() => {
-            this.cardLoading = false;
-        }, 1000);
+  filters: {
+    beShort(value) {
+      if (value.length > 11) {
+        return value.substring(0, 11) + "...";
+      }
+      return value;
     },
+  },
 
-    methods: {
-        editTodoName() {
-            this.todoNameEdit = true;
-            this.$nextTick(() => {
-                this.$refs.todonameeditinput.focus();
-            });
-        },
-        todoNameEdited() {
-            this.todoNameEdit = false;
-            this.$store.dispatch("updateTodo", {sectionid: this.sectionid, id: this.todo.id, title: this.todoName });
-        },
+  mounted() {
+    setTimeout(() => {
+      this.cardLoading = false;
+    }, 1000);
+  },
+
+  methods: {
+    ...mapActions({
+      _updateTodo: "updateTodoTitle",
+    }),
+    editTodoName() {
+      this.todoNameEdit = true;
+      this.$nextTick(() => {
+        this.$refs.todonameeditinput.focus();
+      });
     },
+    todoNameEdited() {
+      this.todoNameEdit = false;
+      this._updateTodo({
+        sectionid: this.sectionid,
+        id: this.todo.id,
+        title: this.todoName,
+      });
+    },
+    editTodo() {
+      this.$router
+        .push({
+          name: "todo",
+          params: { sectionid: this.sectionid, todo: this.todo },
+        })
+        .catch(() => {});
+    },
+  },
 };
 </script>

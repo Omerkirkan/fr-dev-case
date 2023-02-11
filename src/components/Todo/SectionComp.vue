@@ -3,8 +3,8 @@
     <div class="list-section-header">
       <span v-if="!sectionTitleEdit" @click="editTitle()"> {{ section.title }} </span>
       <input type="text" v-model="sectionTitle" ref="sectiontitleedit" v-if="sectionTitleEdit" @blur="updateTitle()">
-      <button @click="addNewTodo()"> Add New Todo </button>
-      <button @click="deleteSection()"> De </button>
+      <a-button type="primary" @click="addNewTodo()"> <a-icon type="plus" /> Add New Todo </a-button>
+      <!-- <button @click="deleteSection()"> De </button> -->
     </div>
     <div class="list-section-body">
       <draggable
@@ -30,6 +30,7 @@
 <script>
 import TodoCard from "@/components/Todo/TodoCard.vue";
 import draggable from "vuedraggable";
+import { mapGetters, mapActions } from "vuex";
 export default {
   name: "SectionComp",
   props: {
@@ -51,19 +52,28 @@ export default {
   },
 
   computed: {
+    ...mapGetters({
+      _todos: "todos",
+    }),
     todos: {
       get() {
-        return this.$store.getters.todos(this.section.id);
+        return this._todos(this.section.id);
       },
       set(todos) {
-        this.$store.dispatch("updateTodos", { id: this.section.id, todos });
+        this._updateTodos({ id: this.section.id, todos });
       },
     },
   },
 
   methods: {
+    ...mapActions({
+      _updateTodos: "updateTodos",
+      _deleteSection: "deleteSection",
+      _updateSectionTitle: "updateSectionTitle",
+      _addNewTodo: "addNewTodo",
+    }),
     addNewTodo() {
-      this.$store.dispatch("addNewTodo", this.section.id);
+      this._addNewTodo(this.section.id);
       
       setTimeout(() => {
         this.$refs.todocardcomp[this.todos.length - 1].editTodoName();
@@ -71,7 +81,7 @@ export default {
 
     },
     deleteSection() {
-      this.$store.dispatch("deleteSection", this.section.id);
+      this._deleteSection(this.section.id)
     },
     editTitle() {
       this.sectionTitleEdit = true;
@@ -81,7 +91,7 @@ export default {
     },
     updateTitle() {
       this.sectionTitleEdit = false;
-      this.$store.dispatch("updateSectionTitle", {
+      this._updateSectionTitle({
         id: this.section.id,
         title: this.sectionTitle,
       });

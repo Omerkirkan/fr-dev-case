@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@400;500;700&display=swap');
 
 .menu-style {
 
@@ -11,6 +11,7 @@
     padding: 24px 24px 16px;
     background-color: #ffffff;
 }
+
 .ant-layout-sider-collapsed {
     padding: 0px !important;
 
@@ -18,7 +19,19 @@
         span {
             display: none;
         }
+
         display: grid;
+    }
+
+    .ant-menu-item {
+        display: flex;
+        justify-content: center !important;
+        align-items: center !important;
+        padding: 12px 8px 12px 6px !important;
+
+        .menu-count {
+            display: none;
+        }
     }
 }
 
@@ -117,15 +130,26 @@
 }
 
 .menu-count {
-    position: absolute;
-    right: 20px;
-    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 10px;
     width: 20px;
     height: 20px;
-    line-height: 20px;
-    text-align: center;
-    background-color: gray;
-    color: #ffffff;
+    background: #1D2939;
+    border-radius: 6px;
+    position: absolute;
+    right: 15px;
+
+    font-family: 'Karla';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+
+    color: #FFFFFF;
 }
 
 .sections-container {
@@ -145,6 +169,7 @@
     .list-section-header {
         height: 40px;
         display: flex;
+        justify-content: space-between;
         font-family: 'Karla';
         font-style: normal;
         font-weight: 700;
@@ -163,7 +188,86 @@
 }
 
 .todo-list-card {
+    background: #FCFCFD;
+    box-shadow: 0px 0.5px 2px rgba(16, 24, 40, 0.3);
+    border-radius: 8px;
+    margin-bottom: 8px;
+    padding: 16px 8px;
+
     .ant-card-head {
         border-bottom: 0px !important;
+        font-family: 'Karla';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 150%;
+        color: #1D2939;
     }
+
+    .todo-created-date {
+        font-family: 'Karla';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 150%;
+        letter-spacing: -0.02em;
+        color: #98A2B3;
+        position: absolute;
+        margin-top: -15px;
+    }
+
+    .todo-card-description {
+        margin-top: 20px;
+        font-family: 'Karla';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 15px;
+        line-height: 120%;
+        letter-spacing: -0.02em;
+        color: #98A2B3;
+        align-self: stretch;
+    }
+
+    .todo-card-img {
+        width: 280px;
+        height: 80px;
+        border-radius: 8px;
+        flex: none;
+        align-self: stretch;
+        flex-grow: 0;
+    }
+
+    .todo-card-addition {
+        display: flex;
+        align-items: center;
+        margin-top: 20px;
+        font-family: 'Karla';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 15px;
+        line-height: 18px;
+        color: #98A2B3;
+    }
+
+    .todo-card-labels {
+        margin-top: 14px;
+        .colorful-label {
+            margin: 5px 5px 0px 0px;
+            border-radius: 4px;
+        }
+    }
+
+    .todo-card-comment {
+        margin-top: 14px;
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+.ml-10 {
+    margin-left: 10px;
+}
+
+.ml-15 {
+    margin-left: 15px;
 }
