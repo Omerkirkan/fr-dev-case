@@ -68,15 +68,16 @@ export default new Vuex.Store({
     // Bu ise yeni bir todo ekler
     addNewTodo({ commit }, sectionId) {
       let words = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-      let colors = ["#FF0000", "#FF7F00", "#FFFF00", "#00FF00", "#0000FF", "#4B0082", "#8B00FF"];
+      let darkerColors = [  "#1c2331",  "#0f3443",  "#2c3e50",  "#34495e",  "#34495e",  "#65737e",  "#95a5a6",  "#7f8c8d",  "#2ecc71",  "#16a085"]
+      let lightColors = [  "#f1c40f",  "#f7dc6f",  "#f9e79f",  "#f0e68c",  "#fdfd96",  "#fffacd",  "#fff5ee",  "#fafad2",  "#f5fffa",  "#f0fff0"]
 
       const followersWords = () => {
         let followers = [];
-        for (let i = 0; i < Math.floor(Math.random() * 1 * 7); i++) {
+        for (let i = 0; i < Math.floor(Math.random() * 1 * 3); i++) {
           followers.push({
             name: words[Math.floor(Math.random() * words.length)],
-            color: colors[Math.floor(Math.random() * colors.length)],
-            bg: colors[Math.floor(Math.random() * colors.length)]
+            color: darkerColors[Math.floor(Math.random() * darkerColors.length)],
+            bg: lightColors[Math.floor(Math.random() * lightColors.length)]
           });
         }
         return followers;

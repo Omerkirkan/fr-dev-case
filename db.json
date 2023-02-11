@@ -2,103 +2,111 @@
   "sections": [
     {
       "id": 1,
-      "title": "Todo",
+      "title": "New Section",
       "todos": [
         {
-          "id": 72797,
-          "title": "Todo 1",
+          "id": 12268,
+          "title": "",
           "description": "New Todo Description",
-          "created_at": 1676123916397,
+          "created_at": 1676124576654,
+          "link": null,
+          "addition": null,
+          "labels": [],
+          "image": false,
+          "comments": 6,
+          "followers": [
+            {
+              "name": "H",
+              "color": "#2ecc71",
+              "bg": "#f1c40f"
+            },
+            {
+              "name": "H",
+              "color": "#95a5a6",
+              "bg": "#fdfd96"
+            }
+          ]
+        },
+        {
+          "id": 29168,
+          "title": "",
+          "description": "New Todo Description",
+          "created_at": 1676124578421,
           "link": null,
           "addition": null,
           "labels": [],
           "image": false,
           "comments": 3,
           "followers": [
-            "D",
-            "U"
-          ]
-        },
-        {
-          "id": 12935,
-          "title": "",
-          "description": "New Todo Description",
-          "created_at": 1676124115533,
-          "link": null,
-          "addition": null,
-          "labels": [],
-          "image": false,
-          "comments": 0,
-          "followers": [
             {
-              "name": "E",
-              "color": "#00FF00",
-              "bg": "#00FF00"
-            },
-            {
-              "name": "M",
-              "color": "#4B0082",
-              "bg": "#00FF00"
-            },
-            {
-              "name": "F",
-              "color": "#8B00FF",
-              "bg": "#FF0000"
-            }
-          ]
-        },
-        {
-          "id": 75520,
-          "title": "",
-          "description": "New Todo Description",
-          "created_at": 1676124182963,
-          "link": null,
-          "addition": null,
-          "labels": [],
-          "image": false,
-          "comments": 0,
-          "followers": [
-            {
-              "name": "F",
-              "color": "#FFFF00",
-              "bg": "#00FF00"
+              "name": "A",
+              "color": "#2ecc71",
+              "bg": "#f0fff0"
             },
             {
               "name": "S",
-              "color": "#FF0000",
-              "bg": "#4B0082"
+              "color": "#2c3e50",
+              "bg": "#fff5ee"
             },
             {
-              "name": "W",
-              "color": "#FFFF00",
-              "bg": "#FF7F00"
+              "name": "Q",
+              "color": "#2ecc71",
+              "bg": "#f9e79f"
+            },
+            {
+              "name": "Z",
+              "color": "#1c2331",
+              "bg": "#f7dc6f"
+            },
+            {
+              "name": "R",
+              "color": "#95a5a6",
+              "bg": "#f0fff0"
             }
           ]
         },
         {
-          "id": 74988,
+          "id": 3805,
           "title": "",
           "description": "New Todo Description",
-          "created_at": 1676124236655,
+          "created_at": 1676124584912,
           "link": null,
           "addition": null,
           "labels": [],
           "image": false,
-          "comments": 5,
+          "comments": 6,
           "followers": [
             {
-              "name": "E",
-              "color": "#FF7F00",
-              "bg": "#0000FF"
+              "name": "M",
+              "color": "#95a5a6",
+              "bg": "#f5fffa"
+            }
+          ]
+        },
+        {
+          "id": 82138,
+          "title": "",
+          "description": "New Todo Description",
+          "created_at": 1676124586909,
+          "link": null,
+          "addition": null,
+          "labels": [],
+          "image": false,
+          "comments": 6,
+          "followers": [
+            {
+              "name": "M",
+              "color": "#34495e",
+              "bg": "#f5fffa"
+            },
+            {
+              "name": "A",
+              "color": "#65737e",
+              "bg": "#f7dc6f"
             }
           ]
         }
       ]
-    },
-    {
-      "id": 2,
-      "title": "New Section",
-      "todos": []
     }
   ]
 }
