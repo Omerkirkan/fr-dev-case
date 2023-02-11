@@ -67,6 +67,16 @@ export default new Vuex.Store({
 
     // Bu ise yeni bir todo ekler
     addNewTodo({ commit }, sectionId) {
+      let words = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+
+      const followersWords = () => {
+        let followers = [];
+        for (let i = 0; i < 2; i++) {
+          followers.push(words[Math.floor(Math.random() * words.length)]);
+        }
+        return followers;
+      }
+
       const newTodo = {
         id: Math.floor(Math.random() * 1 * 99999),
         title: "",
@@ -77,7 +87,7 @@ export default new Vuex.Store({
         labels: [],
         image: false,
         comments: Math.floor(Math.random() * 1 * 7),
-        followers: Math.floor(Math.random() * 1 * 3),
+        followers: followersWords()
       };
 
       const section = this.state.sections.find(section => section.id === sectionId)

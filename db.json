@@ -5,59 +5,92 @@
       "title": "New Section",
       "todos": [
         {
-          "id": 51587,
-          "title": "Todo",
-          "description": "New Todo Description",
-          "created_at": 1676118082600,
-          "link": null,
-          "addition": null,
-          "labels": [],
-          "image": false,
-          "comments": 1,
-          "followers": 1
-        },
-        {
-          "id": 88502,
+          "id": 20531,
           "title": "",
           "description": "New Todo Description",
-          "created_at": 1676122037257,
+          "created_at": 1676123183804,
           "link": null,
           "addition": null,
           "labels": [],
           "image": false,
-          "comments": 6,
-          "followers": 2
+          "comments": 3,
+          "followers": [
+            "D",
+            "X",
+            "P"
+          ]
         },
         {
-          "id": 68813,
+          "id": 95075,
           "title": "",
           "description": "New Todo Description",
-          "created_at": 1676122171904,
+          "created_at": 1676123187779,
           "link": null,
           "addition": null,
           "labels": [],
           "image": false,
-          "comments": 6,
-          "followers": 0
-        },
-        {
-          "id": 5521,
-          "title": "asdasdasdasd",
-          "description": "New Todo Description",
-          "created_at": 1676122191637,
-          "link": null,
-          "addition": null,
-          "labels": [],
-          "image": false,
-          "comments": 4,
-          "followers": 1
+          "comments": 3,
+          "followers": [
+            "W",
+            "W",
+            "M"
+          ]
         }
       ]
     },
     {
       "id": 2,
       "title": "New Section",
-      "todos": []
+      "todos": [
+        {
+          "id": 85690,
+          "title": "",
+          "description": "New Todo Description",
+          "created_at": 1676123182156,
+          "link": null,
+          "addition": null,
+          "labels": [],
+          "image": false,
+          "comments": 0,
+          "followers": [
+            "W",
+            "E",
+            "G"
+          ]
+        },
+        {
+          "id": 26057,
+          "title": "",
+          "description": "New Todo Description",
+          "created_at": 1676123193027,
+          "link": null,
+          "addition": null,
+          "labels": [],
+          "image": false,
+          "comments": 3,
+          "followers": [
+            "D",
+            "E",
+            "Z"
+          ]
+        },
+        {
+          "id": 50465,
+          "title": "",
+          "description": "New Todo Description",
+          "created_at": 1676123185756,
+          "link": null,
+          "addition": null,
+          "labels": [],
+          "image": false,
+          "comments": 4,
+          "followers": [
+            "D",
+            "N",
+            "C"
+          ]
+        }
+      ]
     }
   ]
 }

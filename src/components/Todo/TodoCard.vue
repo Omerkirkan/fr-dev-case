@@ -30,11 +30,11 @@
     />
 
     <div class="todo-card-addition">
-      <div>
+      <div v-if="todo.link">
         <a-icon type="clock-circle" />
         <span> {{ todo.link | beShort }} </span>
       </div>
-      <div class="ml-15">
+      <div class="ml-15" v-if="todo.addition">
         <a-icon type="user" />
         <span> {{ todo.addition | beShort }} </span>
       </div>
@@ -60,9 +60,9 @@
         <a-avatar
           v-for="(follower, i) in todo.followers"
           :key="i"
-          style="color: #f56a00; backgroundcolor: #fde3cf"
+          :style="{'color': colors[Math.floor(Math.random() * 1 * colors.length)], 'background': colors[Math.floor(Math.random() * 1 * colors.length)]}"
         >
-          U
+          <span v-text="follower"></span>
         </a-avatar>
       </div>
     </div>
@@ -127,7 +127,7 @@ export default {
           day: "numeric",
         }
       );
-    }
+    },
   },
 
   mounted() {
