@@ -12,6 +12,7 @@
       type="text"
       v-model="todoName"
       ref="todonameeditinput"
+      @keypress.enter="todoNameEdited()"
       @blur="todoNameEdited()"
       v-if="todoNameEdit"
     />

@@ -22,25 +22,37 @@
       </a-menu-item>
       <a-menu-item key="2">
         <router-link :to="{ name: 'todos' }">
-        <a-icon type="bell" />
-        <span>Notifications</span>
-        <span class="menu-count" style="background-color: #F2F4F7;color: black;">7</span>
-      </router-link>
+          <a-icon type="bell" />
+          <span>Notifications</span>
+          <span
+            class="menu-count"
+            style="background-color: #f2f4f7; color: black"
+            >7</span
+          >
+        </router-link>
       </a-menu-item>
       <a-menu-item key="3">
-        <a-icon type="bar-chart" />
-        <span>Analytics</span>
+        <router-link :to="{ name: 'todos' }">
+          <a-icon type="bar-chart" />
+          <span>Analytics</span>
+        </router-link>
       </a-menu-item>
       <a-menu-item key="4">
-        <a-icon type="user" />
-        <span>Team</span>
-        <span class="menu-count" style="background-color: #F2F4F7;color: black;">2</span>
+        <router-link :to="{ name: 'todos' }">
+          <a-icon type="user" />
+          <span>Team</span>
+          <span
+            class="menu-count"
+            style="background-color: #f2f4f7; color: black"
+            >2</span
+          >
+        </router-link>
       </a-menu-item>
     </a-menu>
   </a-layout-sider>
 </template>
   <script>
-  import { mapGetters } from 'vuex';
+import { mapGetters } from "vuex";
 export default {
   data() {
     return {
@@ -53,7 +65,7 @@ export default {
   },
 
   computed: {
-    ...mapGetters(['todosCount']),
+    ...mapGetters(["todosCount"]),
   },
 
   methods: {

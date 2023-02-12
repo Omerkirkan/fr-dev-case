@@ -1,11 +1,22 @@
 <template>
-  <a-modal v-model="visible" @ok="handleOk" :maskClosable="false" @afterClose="handleOk" :closable="false">
+  <a-modal
+    v-model="visible"
+    @ok="handleOk"
+    :maskClosable="false"
+    @afterClose="handleOk"
+    :closable="false"
+    @cancel="handleCancel"
+  >
     <a-form :label-col="{ span: 5 }" :wrapper-col="{ span: 12 }">
       <a-form-item label="Title">
         <a-input v-model="todoFields.title" />
       </a-form-item>
       <a-form-item label="Description">
-        <a-textarea v-model="todoFields.description" placeholder="Basic usage" :rows="4" />
+        <a-textarea
+          v-model="todoFields.description"
+          placeholder="Basic usage"
+          :rows="4"
+        />
       </a-form-item>
       <a-form-item label="Link">
         <a-input v-model="todoFields.link" />
@@ -14,7 +25,7 @@
         <a-input v-model="todoFields.addition" />
       </a-form-item>
       <a-form-item label="Labels">
-        <a-checkbox-group v-model="todoFields.labels" @change="onChange">
+        <a-checkbox-group v-model="todoFields.labels">
           <a-row>
             <a-col :span="8">
               <a-checkbox value="Design"> Design </a-checkbox>
@@ -35,7 +46,9 @@
         </a-checkbox-group>
       </a-form-item>
       <a-form-item label="Image">
-        <a-button type="light" @click="todoFields.image = true" > <a-icon type="plus" /> Upload Image </a-button>
+        <a-button :type="getImgBtnType" @click="todoFields.image = !todoFields.image" :ghost="todoFields.image" >
+          <a-icon :type="getImgIconType" /> {{ todoFields.image ? "Remove" : "Add" }}
+        </a-button>
       </a-form-item>
     </a-form>
   </a-modal>
@@ -46,32 +59,51 @@ export default {
   data() {
     return {
       visible: true,
-      todoFields: this.todo
+      todoFields: this.todo,
+      todoDatas: null,
     };
   },
 
   watch: {
     $route(newVal) {
       this.visible = newVal.meta && newVal.meta.showModal;
-    }
+    },
   },
 
   mounted() {
-    if( !this.todo.created_at ) {
-        this.$router.push({ name: "todos" });
+    if (!this.todo.created_at) {
+      this.$router.push({ name: "todos" });
     }
+    this.todoDatas = JSON.parse(JSON.stringify(this.todo));
+  },
+
+  computed: {
+    getImgBtnType() {
+      return this.todoFields.image ? "danger" : "light";
+    },
+    getImgIconType() {
+      return this.todoFields.image ? "close" : "upload";
+    },
   },
 
   methods: {
     handleOk() {
-        this.$store.dispatch("updateTodo", { sectionid: this.sectionid, id: this.todo.id, todo: this.todoFields });
+      // burda todoFields ve todoDatas eşitse todo'yu güncelleme
+      if (JSON.stringify(this.todoFields) === JSON.stringify(this.todoDatas)) {
+        this.$router.push({ name: "todos" });
+        console.log("No changes");
+        return;
+      } else {
+        this.$store.dispatch("updateTodo", {
+          sectionid: this.sectionid,
+          id: this.todo.id,
+          todo: this.todoFields,
+        });
+        this.$router.push({ name: "todos" });
+      }
+    },
+    handleCancel() {
       this.$router.push({ name: "todos" });
-    },
-    handleSubmit(e) {
-      e.preventDefault();
-    },
-    onChange(checkedValues) {
-      console.log("checked = ", checkedValues);
     },
   },
 };

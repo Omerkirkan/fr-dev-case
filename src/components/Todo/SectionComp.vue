@@ -2,10 +2,10 @@
   <div class="list-section">
     <div class="list-section-header">
       <span v-if="!sectionTitleEdit" @click="editTitle()"> {{ section.title }} </span>
-      <input type="text" v-model="sectionTitle" ref="sectiontitleedit" v-if="sectionTitleEdit" @blur="updateTitle()">
+      <input type="text" v-model="sectionTitle" ref="sectiontitleedit" v-if="sectionTitleEdit" @keypress.enter="updateTitle()" @blur="updateTitle()">
       <div>
-      <a-button type="primary" @click="addNewTodo()" ghost class="mr-5"> <a-icon type="plus" /> Add New Todo </a-button>
-      <a-button type="danger" @click="deleteSection()" ghost> <a-icon type="delete" /></a-button>
+      <a-button type="primary" @click="addNewTodo()" ghost class="mr-5" v-if="!sectionTitleEdit"> <a-icon type="plus" /> Add New Todo </a-button>
+      <a-button type="danger" @click="deleteSection()" ghost v-if="!sectionTitleEdit"> <a-icon type="delete" /></a-button>
     </div>
     </div>
     <div class="list-section-body">
@@ -75,11 +75,14 @@ export default {
       _addNewTodo: "addNewTodo",
     }),
     addNewTodo() {
-      this._addNewTodo(this.section.id);
-      
-      setTimeout(() => {
-        this.$refs.todocardcomp[this.todos.length - 1].editTodoName();
-      }, 2000);
+      // todo oluşturulduktan sonra inputa focuslanması için
+      this._addNewTodo(this.section.id).then(() => {
+        this.$nextTick(() => {
+          setTimeout(() => {
+            this.$refs.todocardcomp[this.todos.length - 1].editTodoName();
+          }, 1000);
+        });
+      });
 
     },
     deleteSection() {

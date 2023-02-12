@@ -65,7 +65,7 @@ export default new Vuex.Store({
     },
 
     // Bu ise yeni bir todo ekler
-    addNewTodo({ commit }, sectionId) {
+    async addNewTodo({ commit }, sectionId) {
       let words = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
       let darkerColors = [  "#1c2331",  "#0f3443",  "#2c3e50",  "#34495e",  "#34495e",  "#65737e",  "#95a5a6",  "#7f8c8d",  "#2ecc71",  "#16a085"]
       let lightColors = [  "#f1c40f",  "#f7dc6f",  "#f9e79f",  "#f0e68c",  "#fdfd96",  "#fffacd",  "#fff5ee",  "#fafad2",  "#f5fffa",  "#f0fff0"]
@@ -98,9 +98,12 @@ export default new Vuex.Store({
       const section = this.state.sections.find(section => section.id === sectionId)
       section.todos.push(newTodo);
 
-      appService.updateTodos({ id: sectionId, section }).then((response) => {
+      const response = appService.updateTodos({ id: sectionId, section }).then((response) => {
         commit("SET_SECTIONS", response.data);
+        return response;
       })
+
+      return await response;
     },
 
     // Bu ise section'ı siler
