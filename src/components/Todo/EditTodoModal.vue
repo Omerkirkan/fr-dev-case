@@ -50,6 +50,12 @@
           <a-icon :type="getImgIconType" /> {{ todoFields.image ? "Remove" : "Add" }}
         </a-button>
       </a-form-item>
+      <div>
+        <div class="ant-col ant-col-5 ant-form-item-label"></div>
+        <a-button type="danger" @click="deleteTask()" ghost >
+          <a-icon type="delete" /> Delete Task
+        </a-button>
+      </div>
     </a-form>
   </a-modal>
 </template>
@@ -103,6 +109,13 @@ export default {
       }
     },
     handleCancel() {
+      this.$router.push({ name: "todos" });
+    },
+    deleteTask() {
+      this.$store.dispatch("deleteTodo", {
+        sectionid: this.sectionid,
+        id: this.todo.id,
+      });
       this.$router.push({ name: "todos" });
     },
   },

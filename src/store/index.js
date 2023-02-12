@@ -39,12 +39,8 @@ export default new Vuex.Store({
 
       const section = this.state.sections.find(section => section.id === id)
       section.todos = todos;
-      
-      console.log(section);
 
-      appService.updateTodos({ id, section }).then((response) => {
-        console.log(response);
-      })
+      appService.updateTodos({ id, section });
     },
 
     // Bu ise yeni bir section ekler
@@ -117,9 +113,7 @@ export default new Vuex.Store({
       const section = this.state.sections.find(section => section.id === id)
       section.title = title;
 
-      appService.updateTodos({ id, section }).then((response) => {
-        console.log(response);
-      })
+      appService.updateTodos({ id, section })
     },
 
     updateTodoTitle({ commit }, { sectionid, id, title }) {
@@ -136,6 +130,16 @@ export default new Vuex.Store({
       const section = this.state.sections.find(section => section.id === sectionid)
       const todoIndex = section.todos.findIndex(todo => todo.id === id)
       section.todos[todoIndex] = todo;
+
+      appService.updateTodos({ id: sectionid, section }).then((response) => {
+        commit("SET_SECTIONS", response.data);
+      })
+    },
+
+    deleteTodo({ commit }, { sectionid, id }) {
+      const section = this.state.sections.find(section => section.id === sectionid)
+      const todoIndex = section.todos.findIndex(todo => todo.id === id)
+      section.todos.splice(todoIndex, 1);
 
       appService.updateTodos({ id: sectionid, section }).then((response) => {
         commit("SET_SECTIONS", response.data);

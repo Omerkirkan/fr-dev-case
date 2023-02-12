@@ -8,7 +8,7 @@
     :loading="cardLoading"
     @click="editTodo()"
   >
-    <input
+    <a-input
       type="text"
       v-model="todoName"
       ref="todonameeditinput"
