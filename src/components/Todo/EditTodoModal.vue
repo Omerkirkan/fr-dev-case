@@ -35,7 +35,7 @@
         </a-checkbox-group>
       </a-form-item>
       <a-form-item label="Image">
-        <a-button type="light"> <a-icon type="plus" /> Upload Image </a-button>
+        <a-button type="light" @click="todoFields.image = true" > <a-icon type="plus" /> Upload Image </a-button>
       </a-form-item>
     </a-form>
   </a-modal>

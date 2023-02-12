@@ -11,7 +11,6 @@ export default new Vuex.Store({
   getters: {
     sections: (state) => state.sections,
     todos: state => id => state.sections.find(section => section.id === id).todos,
-    // get all todos count
     todosCount: state => state.sections.reduce((acc, section) => acc + section.todos.length, 0),
   },
   mutations: {
